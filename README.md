@@ -1,5 +1,6 @@
 # Experiment--05-Implementation-of-flipflops-using-verilog
-### AIM: To implement all the flipflops using verilog and validating their functionality using their functional tables
+### AIM: 
+To implement all the flipflops using verilog and validating their functionality using their functional tables
 ### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
 ### SOFTWARE REQUIRED:   Quartus prime
 ### THEORY 
@@ -107,18 +108,81 @@ Q(t+1)=T′Q(t)+TQ(t)′
 
 
 ### PROGRAM 
-/*
-Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+- SR FLIP-FLOP:  
+```
+module SR(S,R,clk,Q,Qbar);
+input S,R,clk;
+output Q,Qbar;
+wire X,Y;
+nand (X,S,clk);
+nand (Y,R,clk);
+nand (Q,X,Qbar);
+nand (Qbar,Y,Q);
+endmodule
+```
+- JK FLIP-FLOP:  
+```
+module JK(J,K,clk,Q,Qbar);
+input J,K,clk;
+output Q,Qbar;
+wire X,Y;
+nand (X,J,clk,Qbar);
+nand (Y,K,clk,Q);
+nand (Q,X,Qbar);
+nand (Qbar,Y,Q);
+endmodule
 
-
+```
+- D FLIP-FLOP:  
+```
+module DF(D,clk,Q,Qbar);
+input D,clk;
+output Q,Qbar;
+assign Dbar=~D;
+wire X,Y;
+nand (X,D,clk);
+nand (Y,Dbar,clk);
+nand (Q,X,Qbar);
+nand (Qbar,Y,Q);
+endmodule
+```
+- T FLIP-FLOP:  
+```
+module TF(T,clk,Q,Qbar);
+input T,clk;
+output Q,Qbar;
+wire S,R;
+nand (S,T,clk,Qbar);
+nand (R,T,clk,Q);
+nand (Q,S,Qbar);
+nand (Qbar,R,Q);
+endmodule
+```
 
 
 
 
 ### RTL LOGIC FOR FLIPFLOPS 
+- SR FLIP-FLOP:  
+
+![Screenshot_20230111_011941](https://user-images.githubusercontent.com/118707073/211800535-32e97cdd-ad3f-4262-be3d-9779966075ca.png)  
+
+
+- JK FLIP-FLOP:  
+
+![Screenshot_20230111_012443](https://user-images.githubusercontent.com/118707073/211800583-c1a9ce8d-23f8-4e53-9b85-e16a74f57ee0.png)  
+
+
+- D FLIP-FLOP:  
+
+![Screenshot_20230111_014410](https://user-images.githubusercontent.com/118707073/211800717-03af476c-da9a-4b1c-856f-b9c37b104e5a.png)  
+
+
+- T FLIP-FLOP:  
+
+![Screenshot_20230111_023030](https://user-images.githubusercontent.com/118707073/211800760-ffd1719d-a2eb-446f-9ab8-1dc244725f08.png)  
+
+
 
 
 
@@ -129,6 +193,25 @@ RegisterNumber:
 
 
 ### TIMING DIGRAMS FOR FLIP FLOPS 
+- SR FLIP-FLOP:  
+
+![Screenshot_20230111_013834](https://user-images.githubusercontent.com/118707073/211800806-f9631149-0806-4a4e-9f59-051c75b8babc.png)  
+
+
+- JK FLIP-FLOP:  
+
+![Screenshot_20230111_051852](https://user-images.githubusercontent.com/118707073/211800839-fec7460e-4aeb-4e9a-ac04-13ee8e515964.png)
+  
+  
+- D FLIP-FLOP:  
+ 
+![Screenshot_20230111_052159](https://user-images.githubusercontent.com/118707073/211800889-183bd539-874c-4ac5-a523-820686061586.png)  
+
+
+- T FLIP-FLOP:  
+
+![Screenshot_20230111_052636](https://user-images.githubusercontent.com/118707073/211800916-e86c0f00-a85a-4a65-b4d1-83d67fd21c41.png)  
+
 
 
 
