@@ -221,3 +221,4 @@ endmodule
 
 
 ### RESULTS 
+Thus, the program for flipflops is implemented and its functional table is successfully verified in quartus using Verilog programming.
